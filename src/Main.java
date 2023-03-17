@@ -1,27 +1,26 @@
 import java.text.DecimalFormat;
 import java.util.Scanner;
 
-public class Main {
+public class Body {
     public static void main(String[] args) {
 
         int jumlah_tamu;
+        int persen_diskon = 10;
+        Double harga_setelah_diskon;
         String nama_pemesan;
         Double total_harga = 0.00;
-        int disc_percentage = 10;
-        Double price_after_disc;
 
         DecimalFormat df;
         df = new DecimalFormat("0.00");
 
         Scanner input = new Scanner(System.in);
 
-        Menu[] list_menu = new Menu[6];
+        Menu[] list_menu = new Menu[5];
         list_menu[0] = new Menu("Nasi Goreng Spesial    ", 9999.99);
         list_menu[1] = new Menu("Ayam Bakar Spesial     ", 12345.67);
         list_menu[2] = new Menu("Steak Sirloin Spesial  ", 21108.40);
         list_menu[3] = new Menu("Kwetiaw Siram Spesial  ", 13579.13);
         list_menu[4] = new Menu("Kambing Guling Spesial ", 98765.43);
-        list_menu[5] = new Menu("Babi Guling Sanur      ", 20000.00);
 
         System.out.println("Selamat datang...");
         System.out.print("Pesanan untuk berapa orang : ");
