@@ -1,26 +1,26 @@
 public class Menu {
-    private String name;
-    private Double price;
-    private int quantity;
+    private String nama;
+    private Double harga;
+    private int jumlah;
 
-    Menu(String name, Double price) {
-        this.name = name;
-        this.price = price;
+    Menu(String nama, Double harga) {
+        this.nama = nama;
+        this.harga = harga;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setJumlah(int jumlah) {
+        this.jumlah = jumlah;
     }
 
-    public String getName() {
-        return name;
+    public String getNama() {
+        return nama;
     }
 
-    public Double getPrice() {
-        return price;
+    public Double getHarga() {
+        return harga;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public int getJumlah() {
+        return jumlah;
     }
 }

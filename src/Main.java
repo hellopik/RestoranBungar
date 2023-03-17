@@ -1,13 +1,13 @@
 import java.text.DecimalFormat;
 import java.util.Scanner;
 
-public class Body {
+public class Main {
     public static void main(String[] args) {
 
         int jumlah_tamu;
         int persen_diskon = 10;
         Double harga_setelah_diskon;
-        String nama_pemesan;
+        String nama_tamu;
         Double total_harga = 0.00;
 
         DecimalFormat df;
@@ -15,49 +15,57 @@ public class Body {
 
         Scanner input = new Scanner(System.in);
 
-        Menu[] list_menu = new Menu[5];
-        list_menu[0] = new Menu("Nasi Goreng Spesial    ", 9999.99);
-        list_menu[1] = new Menu("Ayam Bakar Spesial     ", 12345.67);
-        list_menu[2] = new Menu("Steak Sirloin Spesial  ", 21108.40);
-        list_menu[3] = new Menu("Kwetiaw Siram Spesial  ", 13579.13);
-        list_menu[4] = new Menu("Kambing Guling Spesial ", 98765.43);
+        Menu[] daftar_menu = new Menu[5];
+        daftar_menu[0] = new Menu("Nasi Goreng Spesial    ", 9999.99);
+        daftar_menu[1] = new Menu("Ayam Bakar Spesial     ", 12345.67);
+        daftar_menu[2] = new Menu("Steak Sirloin Spesial  ", 21108.40);
+        daftar_menu[3] = new Menu("Kwetiaw Siram Spesial  ", 13579.13);
+        daftar_menu[4] = new Menu("Kambing Guling Spesial ", 98765.43);
 
-        System.out.println("Selamat datang...");
+        System.out.println("Selamat siang...");
         System.out.print("Pesanan untuk berapa orang : ");
-        jumlah_pemesan = input.nextInt();
+        jumlah_tamu = input.nextInt();
         input.nextLine();
         System.out.print("Pesanan atas nama          : ");
-        nama_pemesan = input.nextLine();
+        nama_tamu = input.nextLine();
 
-        System.out.println("Menu spesial hari ini");
+        System.out.println("Menu Spesial hari ini");
         System.out.println("=====================");
-        for (int i = 0; i < list_menu.length; i++) {
-            System.out.println((i+1) + ". " + list_menu[i].getName() + "  @  " + "Rp. " + list_menu[i].getPrice());
+        for (int i = 0; i < daftar_menu.length; i++) {
+            System.out.println((i+1) + ". " + daftar_menu[i].getNama() + "  @  " + "Rp. " + daftar_menu[i].getHarga());
         }
 
-        System.out.println("Masukan jumlah pesanan anda [batas pesanan 0 - 10 porsi]");
-        for (int i = 0; i < list_menu.length; i++) {
-            System.out.print((i+1) + ". " + list_menu[i].getName() + " = ");
+        System.out.println("Pesanan Anda [batas pesanan 0-10 por]");
+        for (int i = 0; i < daftar_menu.length; i++) {
+            System.out.print((i+1) + ". " + daftar_menu[i].getNama() + " = ");
             int quantity = input.nextInt();
-            list_menu[i].setQuantity(quantity);
+            daftar_menu[i].setJumlah(quantity);
         }
 
         System.out.println("Selamat menikmati makanan anda...");
-        System.out.println("Pembelian atas nama " + nama_pemesan + " : ");
-        for (int i = 0; i < list_menu.length; i++) {
-            Double total = list_menu[i].getPrice() * list_menu[i].getQuantity();
-            total_price = total_price + total;
-            System.out.println((i+1) + ". " + list_menu[i].getName() + list_menu[i].getQuantity() + " porsi * " + "Rp. " + list_menu[i].getPrice() + " = " + "Rp. " + df.format(total));
+        System.out.println("Pembelian : ");
+        for (int i = 0; i < daftar_menu.length; i++) {
+            Double total = daftar_menu[i].getHarga() * daftar_menu[i].getJumlah();
+            total_harga = total_harga + total;
+            System.out.print("\n" + (i+1) + ". " + daftar_menu[i].getNama() + daftar_menu[i].getJumlah() 
+            + " porsi * " + "Rp. " + daftar_menu[i].getHarga() + " = " + "Rp. " + df.format(total));
         }
-        price_after_disc = (100 - disc_percent) * total_price / 100;
+        System.out.print(" +\n");
+        harga_setelah_diskon = (100 - persen_diskon) * total_harga / 100;
         System.out.println("=================================================================");
-        System.out.println("Total pembelian                            = " + "Rp. " + df.format(total_price));
-        System.out.println("Disc. 10% <Masa Promosi>                   = " + "Rp. " + df.format(total_price - price_after_disc));
+        System.out.println("Total pembelian                                  = " + "Rp. " + df.format(total_harga));
+        System.out.println("Disc. 10% <Masa Promosi>                         = " + "Rp. " +
+         df.format(total_harga - harga_setelah_diskon) + " -");
         System.out.println("=================================================================");
-        System.out.println("Total pembelian setelah disc 10%           = " + "Rp. " + df.format(price_after_disc));
-        System.out.println("Pembelian per orang" + " < untuk " + jumlah_pemesan + " orang > " + "= " + "Rp. " + df.format(price_after_disc / jumlah_pemesan));
+        System.out.println("Total pembelian setelah disc 10%           = " + "Rp. " + df.format(harga_setelah_diskon));
+        System.out.println("Pembelian per orang" + " < untuk " + jumlah_tamu + " orang >      " + "= " + "Rp. " +
+         df.format(harga_setelah_diskon / jumlah_tamu));
 
-        System.out.println("Terima kasih atas kunjungan anda...");
+        System.out.println("            Terima kasih atas kunjungan anda...");
+        System.out.print("            ...Tekan ENTER untuk keluar...");
+        input.nextLine();
         System.exit(0);
+
+        input.close();
     }
 }
